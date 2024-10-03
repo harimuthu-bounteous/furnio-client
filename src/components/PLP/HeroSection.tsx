@@ -2,9 +2,7 @@ import { FC } from "react";
 import Typography from "@/src/components/common/Typography";
 import BreadcrumbArrow from "@/public/assets/icons/BreadcrumbArrow";
 
-interface HeroSectionProps {}
-
-const HeroSection: FC<HeroSectionProps> = ({}) => {
+const HeroSection: FC = () => {
   return (
     <div className='h-96 bg-[url("/assets/images/HeroBackground.png")] bg-no-repeat bg-cover flex flex-col items-center justify-center gap-2'>
       <Typography variant="h1" className="text-5xl font-medium">

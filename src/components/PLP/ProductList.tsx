@@ -2,11 +2,8 @@ import FilterIcon from "@/public/assets/icons/FilterIcon";
 import GridRoundIcon from "@/public/assets/icons/GridRoundIcon";
 import ViewListIcon from "@/public/assets/icons/ViewListIcon";
 import { FC } from "react";
-import Separator from "../common/Seperator";
 
-interface ProductListProps {}
-
-const ProductList: FC<ProductListProps> = ({}) => {
+const ProductList: FC = () => {
   return (
     <div className="flex flex-col">
       <div className="bg-beige p-6 px-20 flex flex-row items-center justify-between">

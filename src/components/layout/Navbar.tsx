@@ -8,9 +8,7 @@ import AccountAlertIcon from "@/public/assets/icons/AccountAlertIcon";
 import SearchIcon from "@/public/assets/icons/SearchIcon";
 import ShoppingCartIcon from "@/public/assets/icons/ShoppingCartIcon";
 
-interface NavbarProps {}
-
-const Navbar: FC<NavbarProps> = ({}) => {
+const Navbar: FC = () => {
   return (
     <nav className="flex flex-row items-center justify-between py-6 px-12">
       <div className="flex flex-row items-center justify-center gap-2">
