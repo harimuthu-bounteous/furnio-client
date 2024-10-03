@@ -9,8 +9,11 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        background: "var(--background)",
-        foreground: "var(--foreground)",
+        beige: "#F9F1E7",
+      },
+      fontFamily: {
+        montserrat: ["Montserrat"],
+        poppins: ["Poppins"],
       },
     },
   },
