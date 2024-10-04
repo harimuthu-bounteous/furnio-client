@@ -35,28 +35,38 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         )}
       </div>
       <div className="bg-gray-100 p-3 space-y-1.5">
-        <Typography variant="h2" className="font-semibold text-2xl">
-          {product.name}
-        </Typography>
-        <Typography variant="h3" className="text-lg text-gray-400">
-          {product.description}
-        </Typography>
+        <Typography
+          variant="h2"
+          className="font-semibold text-2xl"
+          value={product.name}
+        />
+        <Typography
+          variant="h3"
+          className="text-lg text-gray-400"
+          value={product.description}
+        />
         <div className="flex flex-row justify-between">
-          <Typography variant="p" className="text-lg font-medium">
-            {product.price}
-          </Typography>{" "}
+          <Typography
+            variant="p"
+            className="text-lg font-medium"
+            value={product.price}
+          />
           {product.old_price && (
-            <Typography variant="p" className="line-through text-gray-300">
-              {product.old_price}
-            </Typography>
+            <Typography
+              variant="p"
+              className="line-through text-gray-300"
+              value={product.old_price}
+            />
           )}
         </div>
       </div>
 
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 flex flex-col items-center justify-center gap-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <Button variant="v2" className="px-14 py-3 text-xl">
-          Add to Cart
-        </Button>
+        <Button
+          variant="v2"
+          className="px-14 py-3 text-xl"
+          value="Add to Cart"
+        />
         <div className="flex flex-row gap-4">
           <Link
             href="/shop"

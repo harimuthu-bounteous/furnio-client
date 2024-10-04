@@ -13,11 +13,13 @@ const Navbar: FC = () => {
     <nav className="flex flex-row items-center justify-between py-6 px-12">
       <div className="flex flex-row items-center justify-center gap-2">
         <Image src={Logo} alt="Logo" />
-        <Typography variant="h2" className="text-3xl font-bold font-montserrat">
-          Furniro
-        </Typography>
+        <Typography
+          variant="h2"
+          className="text-3xl font-bold font-montserrat"
+          value="Furniro"
+        />
       </div>
-      <div className="flex flex-row gap-x-16 font-medium font-poppins text-lg">
+      <div className="flex flex-row gap-x-16 font-medium text-lg">
         <Link href="/shop">Home</Link>
         <Link href="/shop">Shop</Link>
         <Link href="/shop">About</Link>

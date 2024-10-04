@@ -2,10 +2,11 @@ import { cn } from "@/src/utils/cn";
 import { FC, ReactNode } from "react";
 
 interface ButtonProps {
-  variant?: "primary" | "secondary" | "outline" | "v1" | "v2";
+  variant?: "primary" | "secondary" | "outline" | "v1" | "v2" | "v3" | "v4";
   size?: "small" | "medium" | "large";
   icon?: ReactNode;
-  children: ReactNode;
+  children?: ReactNode;
+  value: string;
   onClick?: () => void;
   className?: string;
   disabled?: boolean;
@@ -15,7 +16,7 @@ const Button: FC<ButtonProps> = ({
   variant = "primary",
   size = "medium",
   icon,
-  children,
+  value,
   onClick,
   className = "",
   disabled = false,
@@ -34,6 +35,10 @@ const Button: FC<ButtonProps> = ({
           "bg-white text-black/30 rounded-sm h-10 w-10": variant === "v1",
           "bg-white text-yellow-600 rounded-none font-semibold text-3xl":
             variant === "v2",
+          "bg-beige text-black hover:bg-yellow-600 hover:text-white transition-all":
+            variant === "v3",
+          "text-black bg-white bg-hover border-b-2 rounded-none px-0 py-0":
+            variant === "v4",
           "opacity-50 cursor-not-allowed": disabled,
         },
         {
@@ -45,7 +50,7 @@ const Button: FC<ButtonProps> = ({
       )}
     >
       {icon && <span className="mr-2">{icon}</span>}
-      {children}
+      {value}
     </button>
   );
 };

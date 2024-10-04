@@ -1,14 +1,14 @@
-import Navbar from "@/src/components/layout/Navbar";
+import BenefitsSection from "@/src/components/PLP/BenefitsSection";
 import HeroSection from "@/src/components/PLP/HeroSection";
-import ProductList from "@/src/components/PLP/ProductList";
+import ProductListSection from "@/src/components/PLP/ProductListSection";
 import { FC } from "react";
 
 const page: FC = () => {
   return (
     <>
-      <Navbar />
       <HeroSection />
-      <ProductList />
+      <ProductListSection />
+      <BenefitsSection />
     </>
   );
 };
