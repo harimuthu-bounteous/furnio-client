@@ -7,12 +7,7 @@ interface TypographyProps {
   className?: string; // Custom class for styling
 }
 
-const Typography = ({
-  variant,
-  children,
-  value,
-  className = "",
-}: TypographyProps) => {
+const Typography = ({ variant, value, className = "" }: TypographyProps) => {
   const Component = variant;
   return <Component className={"font-poppins " + className}>{value}</Component>;
 };

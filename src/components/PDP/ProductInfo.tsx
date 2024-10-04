@@ -1,6 +1,5 @@
 "use client";
 import { FC, useState } from "react";
-import { selectedProduct } from "@/src/data/SelectedProduct";
 import { SelectedProduct } from "@/src/types/SelectedProduct";
 import Link from "next/link";
 import FacebookIcon from "@/public/assets/icons/FacebookIcon";

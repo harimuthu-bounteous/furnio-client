@@ -2,9 +2,7 @@ import { FC } from "react";
 import Typography from "../common/Typography";
 import { benefits } from "@/src/data/Benefits";
 
-interface BenefitsSectionProps {}
-
-const BenefitsSection: FC<BenefitsSectionProps> = ({}) => {
+const BenefitsSection: FC = () => {
   return (
     <div className="bg-beige flex flex-row items-center justify-center gap-16">
       {benefits.map((benefit) => {
