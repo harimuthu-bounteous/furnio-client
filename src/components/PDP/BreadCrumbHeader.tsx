@@ -2,9 +2,7 @@ import BreadcrumbArrow from "@/public/assets/icons/BreadcrumbArrow";
 import Link from "next/link";
 import { FC } from "react";
 
-interface BreadCrumbHeaderProps {}
-
-const BreadCrumbHeader: FC<BreadCrumbHeaderProps> = ({}) => {
+const BreadCrumbHeader: FC = () => {
   return (
     <div className="bg-beige flex flex-row items-center px-16 py-6 gap-3">
       <Link href="/shop" className="text-lg text-gray-400 hover:underline">

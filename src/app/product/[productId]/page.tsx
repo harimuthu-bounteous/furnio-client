@@ -9,7 +9,7 @@ interface PageProp {
   };
 }
 
-export default function Page({ params }: PageProp) {
+export default function Page({}: PageProp) {
   return (
     <div>
       {/* Bread Crumb */}

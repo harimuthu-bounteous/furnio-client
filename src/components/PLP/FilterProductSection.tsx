@@ -4,9 +4,7 @@ import ViewListIcon from "@/public/assets/icons/ViewListIcon";
 import { FC } from "react";
 import Button from "../common/Button";
 
-interface FilterProductSectionProps {}
-
-const FilterProductSection: FC<FilterProductSectionProps> = ({}) => {
+const FilterProductSection: FC = () => {
   return (
     <div className="bg-beige p-6 px-20 flex flex-row items-center justify-between">
       <div className="flex flex-row items-center gap-4">

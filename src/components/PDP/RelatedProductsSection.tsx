@@ -1,8 +1,6 @@
 import { FC } from "react";
 
-interface RelatedProductsProps {}
-
-const RelatedProducts: FC<RelatedProductsProps> = ({}) => {
+const RelatedProducts: FC = () => {
   return <div>RelatedProducts</div>;
 };
 

@@ -1,8 +1,6 @@
 import { FC } from "react";
 
-interface TabNavigationProps {}
-
-const TabNavigation: FC<TabNavigationProps> = ({}) => {
+const TabNavigation: FC = () => {
   return <div>TabNavigation</div>;
 };
 

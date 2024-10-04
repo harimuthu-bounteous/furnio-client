@@ -4,9 +4,7 @@ import Typography from "../common/Typography";
 import Input from "../common/Input";
 import Button from "../common/Button";
 
-interface FooterProps {}
-
-const Footer: FC<FooterProps> = ({}) => {
+const Footer: FC = () => {
   const footerLinks = [
     {
       title: "Links",
