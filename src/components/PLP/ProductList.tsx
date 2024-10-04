@@ -1,7 +1,10 @@
+import { FC } from "react";
 import FilterIcon from "@/public/assets/icons/FilterIcon";
 import GridRoundIcon from "@/public/assets/icons/GridRoundIcon";
 import ViewListIcon from "@/public/assets/icons/ViewListIcon";
-import { FC } from "react";
+import Button from "@/src/components/common/Button";
+import { products } from "@/src/data/Products";
+import ProductCard from "../common/ProductCard";
 
 const ProductList: FC = () => {
   return (
@@ -16,26 +19,28 @@ const ProductList: FC = () => {
             <GridRoundIcon />
             <ViewListIcon />
           </div>
-          {/* <Separator orientation="vertical" className="" /> */}
           <div className="w-[2px] h-8 bg-black/70 mx-2"></div>
           <div>Showing 1-16 of 32 results</div>
         </div>
         <div className="flex flex-row items-center justify-center gap-16">
           <div className="text-lg flex flex-row items-center justify-center gap-6">
-            Show{" "}
-            <div className="bg-white text-black/30 flex items-center justify-center rounded-sm h-10 w-10">
-              16
-            </div>
+            Show <Button variant="v1">16</Button>
           </div>
           <div className="text-lg flex flex-row items-center justify-center gap-6">
             Sort By{" "}
-            <div className="bg-white text-black/30 flex justify-start items-center rounded-sm h-10 pl-5 pr-16">
+            <Button variant="v1" className="pl-10 pr-20">
               Default
-            </div>
+            </Button>
           </div>
         </div>
       </div>
-      <div></div>
+
+      {/* Product List */}
+      <div className="grid grid-cols-4 px-36 py-12 gap-16">
+        {products.map((product) => (
+          <ProductCard product={product} key={product.id} />
+        ))}
+      </div>
       <div></div>
     </div>
   );

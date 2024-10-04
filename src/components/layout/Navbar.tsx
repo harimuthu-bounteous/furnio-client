@@ -12,12 +12,7 @@ const Navbar: FC = () => {
   return (
     <nav className="flex flex-row items-center justify-between py-6 px-12">
       <div className="flex flex-row items-center justify-center gap-2">
-        <Image
-          src={Logo}
-          alt="Logo"
-          // width={500}
-          // height={500}
-        />
+        <Image src={Logo} alt="Logo" />
         <Typography variant="h2" className="text-3xl font-bold font-montserrat">
           Furniro
         </Typography>
