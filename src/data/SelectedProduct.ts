@@ -31,10 +31,35 @@ export const selectedProduct: SelectedProduct = {
     },
   ],
   thumbNailImages: [
-    "/assets/images/Sofa1.png",
-    "/assets/images/Sofa2.png",
-    "/assets/images/Sofa3.png",
-    "/assets/images/Sofa4.png",
-    "/assets/images/Sofa5.png",
+    {
+      alt: "Sofa1",
+      image: "/assets/images/Sofa1.png",
+    },
+    {
+      alt: "Sofa2",
+      image: "/assets/images/Sofa2.png",
+    },
+    {
+      alt: "Sofa3",
+      image: "/assets/images/Sofa3.png",
+    },
+    {
+      alt: "Sofa4",
+      image: "/assets/images/Sofa4.png",
+    },
+    {
+      alt: "Sofa5",
+      image: "/assets/images/Sofa5.png",
+    },
+  ],
+  descriptionImages: [
+    {
+      alt: "Sofa6",
+      image: "/assets/images/Sofa6.png",
+    },
+    {
+      alt: "Sofa7",
+      image: "/assets/images/Sofa7.png",
+    },
   ],
 };

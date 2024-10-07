@@ -4,7 +4,7 @@ import { FC } from "react";
 
 const BreadCrumbHeader: FC = () => {
   return (
-    <div className="bg-beige flex flex-row items-center px-16 py-6 gap-3">
+    <div className="bg-beige flex flex-row items-center p-4 md:px-16 md:py-6 gap-1 md:gap-3">
       <Link href="/shop" className="text-lg text-gray-400 hover:underline">
         Home
       </Link>
@@ -13,7 +13,7 @@ const BreadCrumbHeader: FC = () => {
         Shop
       </Link>
       <BreadcrumbArrow />
-      <div className="bg-black/60 w-0.5 h-8 mx-6" />
+      <div className="bg-black/60 w-0.5 h-6 md:h-8 mx-4 md:mx-6" />
       <Link
         href="/product/123"
         className="text-lg text-gray-400 hover:underline"

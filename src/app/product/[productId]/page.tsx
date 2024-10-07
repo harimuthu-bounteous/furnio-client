@@ -12,18 +12,8 @@ interface PageProp {
 export default function Page({}: PageProp) {
   return (
     <div>
-      {/* Bread Crumb */}
       <BreadCrumbHeader />
-      {/* Product Details */}
-      {/* 1. ThumbNail Gallery */}
-      {/* 2. Product Info */}
-      {/* 3. Product Variant, Quantity and Cart Options */}
-      {/* 4. Product Meta Information */}
       <ProductDetailsSection />
-      {/* Tab Navigation */}
-      <TabNavigationSection />
-      {/* Related Products */}
-      <RelatedProducts />
     </div>
   );
 }

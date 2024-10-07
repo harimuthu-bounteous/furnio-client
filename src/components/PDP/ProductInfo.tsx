@@ -33,7 +33,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
   };
 
   return (
-    <div className="w-1/2 mx-auto px-4 py-2 bg-white rounded-md">
+    <div className="w-full md:w-1/2 mx-auto px-8 md:px-4 md:py-2 bg-white rounded-md">
       {/* Product Title and Price */}
       <Typography
         variant="h1"
@@ -118,28 +118,32 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
         </div>
       </div>
 
-      <div className="flex space-x-4 mt-4">
+      <div className="w-full flex flex-col md:flex-row gap-2 md:gap-4 mt-4">
         {/* Quantity Selector */}
-        <div className="my-4 flex items-center border border-black rounded-md">
+        <div className=" w-full flex flex-row items-center justify-between border border-black rounded-md">
           <button
             onClick={() => handleQuantityChange(-1)}
-            className="px-4 py-4 hover:bg-gray-200 rounded-l-md"
+            className="p-3 hover:bg-gray-200 font-bold text-3xl rounded-l-md w-1/3"
           >
             -
           </button>
-          <span className="w-3 px-10 py-4">{quantity}</span>
+          <Typography
+            value={quantity.toString()}
+            variant="span"
+            className="w-1/3 p-3 text-center font-bold"
+          />
           <button
             onClick={() => handleQuantityChange(1)}
-            className="px-4 py-4 hover:bg-gray-200 rounded-r-md"
+            className="w-1/3 p-3 hover:bg-gray-200 text-3xl rounded-r-md"
           >
             +
           </button>
         </div>
         {/* Add to Cart and Compare Buttons */}
-        <button className="flex-1 my-4 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white transition-all">
+        <button className="w-full flex items-center justify-center py-3 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white transition-all">
           Add To Cart
         </button>
-        <button className="flex-1 inline-flex gap-2 flex-row items-center justify-center my-4 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white hover:stroke-white transition-all">
+        <button className="w-full flex flex-row gap-2 items-center justify-center py-3 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white hover:stroke-white transition-all">
           <PlusIcon className="hover:stroke-inherit" />
           <span className="">Compare</span>
         </button>

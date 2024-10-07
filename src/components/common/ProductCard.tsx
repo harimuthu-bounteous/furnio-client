@@ -19,7 +19,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
         <Image
           src={product.image}
           alt={product.name}
-          width={250}
+          width={380}
           height={100}
           className="w-full"
         />

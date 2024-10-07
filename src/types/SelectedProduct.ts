@@ -17,5 +17,6 @@ export interface SelectedProduct {
     name: string;
     value: string;
   }[];
-  thumbNailImages: string[];
+  thumbNailImages: { image: string; alt: string }[];
+  descriptionImages: { image: string; alt: string }[];
 }

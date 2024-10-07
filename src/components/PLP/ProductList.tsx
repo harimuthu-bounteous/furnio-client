@@ -4,7 +4,7 @@ import ProductCard from "../common/ProductCard";
 
 const ProductList: FC = () => {
   return (
-    <div className="grid grid-cols-4 px-36 py-12 gap-16">
+    <div className="grid grid-cols-1 md:grid-cols-4 p-8 md:px-36 md:py-12 gap-16">
       {products.map((product) => (
         <ProductCard product={product} key={product.id} />
       ))}
