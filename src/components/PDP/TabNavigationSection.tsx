@@ -78,7 +78,7 @@ const TabNavigation: FC<TabNavigationProps> = ({ descriptionImages }) => {
             <div className="flex flex-col md:flex-row mt-8 justify-around gap-5">
               {descriptionImages.map((descImage) => {
                 return (
-                  <div className="bg-beige p-4 rounded-lg">
+                  <div className="bg-beige p-4 rounded-lg" key={descImage.alt}>
                     <img
                       src={descImage.image}
                       alt={descImage.alt}

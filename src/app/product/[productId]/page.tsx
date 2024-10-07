@@ -1,7 +1,5 @@
 import BreadCrumbHeader from "@/src/components/PDP/BreadCrumbHeader";
 import ProductDetailsSection from "@/src/components/PDP/ProductDetailsSection";
-import RelatedProducts from "@/src/components/PDP/RelatedProductsSection";
-import TabNavigationSection from "@/src/components/PDP/TabNavigationSection";
 
 interface PageProp {
   params: {

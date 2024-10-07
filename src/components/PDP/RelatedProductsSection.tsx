@@ -5,9 +5,7 @@ import { products } from "@/src/data/Products";
 import ProductCard from "../common/ProductCard";
 import Button from "../common/Button";
 
-interface RelatedProductsProp {}
-
-const RelatedProducts: FC<RelatedProductsProp> = () => {
+const RelatedProducts: FC = () => {
   const [visibleCount, setVisibleCount] = useState<number>(4);
 
   const showMoreProducts = () => {
