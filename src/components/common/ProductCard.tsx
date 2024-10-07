@@ -14,7 +14,7 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   return (
-    <div className="flex flex-col relative group overflow-hidden">
+    <div className="flex flex-col relative group overflow-hidden shadow rounded border border-gray-300">
       <div className="relative">
         <Image
           src={product.image}
@@ -34,7 +34,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           </div>
         )}
       </div>
-      <div className="bg-gray-100 p-3 space-y-1.5">
+      <div className="bg-gray-100 p-3 space-y-1.5 min-h-full">
         <Typography
           variant="h2"
           className="font-semibold text-2xl"
@@ -49,24 +49,20 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           <Typography
             variant="p"
             className="text-lg font-medium"
-            value={product.price}
+            value={"Rs. " + product.price.toFixed(2)}
           />
           {product.old_price && (
             <Typography
               variant="p"
               className="line-through text-gray-300"
-              value={product.old_price}
+              value={"Rs. " + product.old_price.toFixed(2)}
             />
           )}
         </div>
       </div>
 
       <div className="absolute top-0 left-0 w-full h-full bg-black bg-opacity-70 flex flex-col items-center justify-center gap-8 opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-        <Button
-          variant="v2"
-          className="px-14 py-3 text-xl"
-          value="Add to Cart"
-        />
+        <Button variant="v2" className="" value="Add to Cart" />
         <div className="flex flex-row gap-4">
           <Link
             href="/shop"

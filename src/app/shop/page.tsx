@@ -5,11 +5,11 @@ import { FC } from "react";
 
 const page: FC = () => {
   return (
-    <>
+    <div className="flex flex-col">
       <HeroSection />
       <ProductListSection />
       <BenefitsSection />
-    </>
+    </div>
   );
 };
 

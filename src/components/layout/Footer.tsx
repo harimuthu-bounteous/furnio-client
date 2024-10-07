@@ -18,7 +18,7 @@ const Footer: FC = () => {
 
   return (
     <footer className="bg-white text-black p-6 md:py-16 md:px-6">
-      <div className="container mx-auto flex flex-col md:flex-row justify-between gap-4 md:gap-20">
+      <div className="flex flex-col md:flex-row justify-between gap-4 md:gap-20 md:mx-20">
         {/* Company Info */}
         <div className="w-full md:w-1/3 mb-6 md:mb-0 space-y-2 md:space-y-12">
           <h2 className="text-2xl font-bold md:mb-2">Funiro.</h2>
@@ -75,7 +75,7 @@ const Footer: FC = () => {
         </div>
       </div>
 
-      <div className="border-t border-gray-300 mt-12 pt-6 md:mt-16 md:mx-24 md:pt-8 ">
+      <div className="border-t border-gray-300 mt-12 pt-6 md:mt-16 md:mx-20 md:pt-8 ">
         <p className="text-black text-lg">
           &copy; 2023 Funiro. All rights reserved.
         </p>

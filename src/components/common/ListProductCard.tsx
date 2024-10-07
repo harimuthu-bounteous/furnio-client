@@ -1,0 +1,33 @@
+// ListProductCard.tsx
+import { Product } from "@/src/types/Product";
+import { FC } from "react";
+
+interface ListProductCardProps {
+  product: Product;
+}
+
+const ListProductCard: FC<ListProductCardProps> = ({ product }) => {
+  return (
+    <div className="w-full md:w-[80%] flex flex-row items-center gap-4 md:gap-12 p-2 md:p-4 bg-white rounded-md shadow-md">
+      <img
+        src={product.image}
+        alt={product.name}
+        className="w-32 h-32 object-cover rounded-md"
+      />
+      <div className="w-full flex flex-col md:flex-row justify-between">
+        <div className="flex flex-col items-start justify-center md:gap-3">
+          <h2 className="text-lg font-semibold">{product.name}</h2>
+          <p className="text-gray-500">{product.description}</p>
+        </div>
+        <div className="flex flex-col gap-2 md:gap-4 justify-center items-start md:items-center">
+          <p className="text-yellow-600 font-bold">${product.price}</p>
+          <button className="w-full px-4 py-2 bg-yellow-500 text-white rounded-md whitespace-nowrap text-sm md:text-base">
+            Add to Cart
+          </button>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default ListProductCard;
