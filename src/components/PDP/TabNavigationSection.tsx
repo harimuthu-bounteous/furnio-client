@@ -1,11 +1,12 @@
 "use client";
 import { FC, useState } from "react";
 import Typography from "../common/Typography";
+import { cn } from "@/src/utils/cn";
 
 interface TabNavigationProps {
   descriptionImages: {
-    image: string;
-    alt: string;
+    ImageUrl: string;
+    Alt: string;
   }[];
 }
 
@@ -42,11 +43,12 @@ const TabNavigation: FC<TabNavigationProps> = ({ descriptionImages }) => {
         </button>
         <button
           onClick={() => handleTabClick("reviews")}
-          className={`px-6 py-2 focus:outline-none ${
+          className={cn(
+            "px-6 py-2 focus:outline-none",
             activeTab === "reviews"
               ? "border-b-2 border-black font-bold"
               : "text-gray-500"
-          }`}
+          )}
         >
           Reviews [5]
         </button>
@@ -78,10 +80,10 @@ const TabNavigation: FC<TabNavigationProps> = ({ descriptionImages }) => {
             <div className="flex flex-col md:flex-row mt-8 justify-around gap-5">
               {descriptionImages.map((descImage) => {
                 return (
-                  <div className="bg-beige p-4 rounded-lg" key={descImage.alt}>
+                  <div className="bg-beige p-4 rounded-lg" key={descImage.Alt}>
                     <img
-                      src={descImage.image}
-                      alt={descImage.alt}
+                      src={descImage.ImageUrl}
+                      alt={descImage.Alt}
                       className="w-full h-auto"
                     />
                   </div>

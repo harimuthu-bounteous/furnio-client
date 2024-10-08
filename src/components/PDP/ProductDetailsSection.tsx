@@ -1,21 +1,25 @@
 import { FC } from "react";
 import ThumbNailGallery from "./ThumbNailGallery";
 import ProductInfo from "./ProductInfo";
-import { selectedProduct } from "@/src/data/SelectedProduct";
 import TabNavigation from "./TabNavigationSection";
 import RelatedProducts from "./RelatedProductsSection";
+import { SelectedProduct } from "@/src/types/SelectedProduct";
 
-const ProductDetails: FC = () => {
+interface ProductDetailsSectionProp {
+  product: SelectedProduct;
+}
+
+const ProductDetailsSection: FC<ProductDetailsSectionProp> = ({ product }) => {
   return (
-    <>
+    <div className="flex flex-col">
       <div className="container flex flex-col md:flex-row mx-auto md:p-8">
-        <ThumbNailGallery images={selectedProduct.thumbNailImages} />
-        <ProductInfo selectProduct={selectedProduct} />
+        <ThumbNailGallery images={product.ThumbNailImages} />
+        <ProductInfo selectProduct={product} />
       </div>
-      <TabNavigation descriptionImages={selectedProduct.descriptionImages} />
+      <TabNavigation descriptionImages={product.DescriptionImages} />
       <RelatedProducts />
-    </>
+    </div>
   );
 };
 
-export default ProductDetails;
+export default ProductDetailsSection;

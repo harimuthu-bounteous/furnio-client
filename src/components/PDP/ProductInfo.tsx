@@ -1,12 +1,12 @@
 "use client";
 import { FC, useState } from "react";
 import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { cn } from "@/src/utils/cn";
 import Link from "next/link";
 import FacebookIcon from "@/public/assets/icons/FacebookIcon";
 import LinkedinIcon from "@/public/assets/icons/LinkedinIcon";
 import TwitterIcon from "@/public/assets/icons/TwitterIcon";
 import Typography from "../common/Typography";
-import { cn } from "@/src/utils/cn";
 import PlusIcon from "@/public/assets/icons/PlusIcon";
 
 interface ProductInfoProps {
@@ -14,9 +14,9 @@ interface ProductInfoProps {
 }
 
 const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
-  const [selectedSize, setSelectedSize] = useState(selectProduct.sizes[0]);
+  const [selectedSize, setSelectedSize] = useState(selectProduct.Sizes[0]);
   const [selectedColor, setSelectedColor] = useState(
-    selectProduct.colors[0].value
+    selectProduct.Colors[0].Value
   );
   const [quantity, setQuantity] = useState(1);
 
@@ -37,11 +37,11 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
       {/* Product Title and Price */}
       <Typography
         variant="h1"
-        value={selectProduct.name}
+        value={selectProduct.Name}
         className="text-3xl font-medium"
       />
       <Typography
-        value={"Rs. " + selectProduct.price.toFixed(2)}
+        value={"Rs. " + selectProduct.Price.toFixed(2)}
         variant="p"
         className="text-2xl text-gray-400"
       />
@@ -49,25 +49,25 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
       {/* Rating and Reviews */}
       <div className="flex flex-row gap-4 items-center my-3">
         <div className="flex text-yellow-500">
-          {[...Array(Math.floor(selectProduct.rating))].map((_, index) => (
+          {[...Array(Math.floor(selectProduct.Rating))].map((_, index) => (
             <span key={index} className="text-2xl">
               ★
             </span>
           ))}
-          {selectProduct.rating % 1 !== 0 && (
+          {selectProduct.Rating % 1 !== 0 && (
             <span className="text-2xl">★½</span>
           )}
         </div>
         <div className="w-0.5 h-8 bg-black/60 mx-2" />
         <span className="text-gray-500">
-          {selectProduct.reviews} Customer Reviews
+          {selectProduct.Reviews} Customer Reviews
         </span>
       </div>
 
       {/* Description */}
       <Typography
         variant="p"
-        value={selectProduct.description}
+        value={selectProduct.Description}
         className="text-gray-700 my-4"
       />
 
@@ -79,12 +79,12 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           className="font-semibold mb-2 text-gray-400"
         />
         <div className="flex space-x-2">
-          {selectProduct.sizes.map((size) => (
+          {selectProduct.Sizes.map((size) => (
             <button
               key={size}
               onClick={() => handleSizeChange(size)}
               className={cn(
-                "h-10 w-10 rounded-md",
+                "rounded-md px-4 py-2",
                 size === selectedSize ? "bg-yellow-600 text-white" : "bg-beige "
               )}
             >
@@ -102,17 +102,17 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           className="font-semibold mb-2 text-gray-400"
         />
         <div className="flex space-x-2">
-          {selectProduct.colors.map((color) => (
+          {selectProduct.Colors.map((color) => (
             <button
-              key={color.name}
-              onClick={() => handleColorChange(color.value)}
+              key={color.Name}
+              onClick={() => handleColorChange(color.Value)}
               className={cn(
                 "w-8 h-8 rounded-full border-2",
-                color.value === selectedColor
+                color.Value === selectedColor
                   ? "border-gray-100"
                   : "border-transparent"
               )}
-              style={{ backgroundColor: color.value }}
+              style={{ backgroundColor: color.Value }}
             />
           ))}
         </div>
@@ -157,7 +157,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
             variant="span"
             className="font-semibold min-w-[100px]"
           />
-          : {selectProduct.sku}
+          : {selectProduct.SKU}
         </div>
         <div className="flex flex-row gap-1">
           <Typography
@@ -165,7 +165,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
             variant="span"
             className="font-semibold min-w-[100px]"
           />
-          : {selectProduct.category}
+          : {selectProduct.Category}
         </div>
         <div className="flex flex-row gap-1">
           <Typography
@@ -173,7 +173,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
             value="Tags"
             className="font-semibold min-w-[100px]"
           />
-          : {selectProduct.tags.join(", ")}
+          : {selectProduct.Tags.join(", ")}
         </div>
         <div className="flex flex-row items-center gap-1">
           <Typography
@@ -183,13 +183,13 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           />
           :{" "}
           <div className="flex space-x-4">
-            <Link href={selectProduct.shareLinks.facebook} className="text-xl">
+            <Link href={selectProduct.ShareLinks.Facebook} className="text-xl">
               <FacebookIcon />
             </Link>
-            <Link href={selectProduct.shareLinks.linkedin} className="text-xl">
+            <Link href={selectProduct.ShareLinks.Linkedin} className="text-xl">
               <LinkedinIcon />
             </Link>
-            <Link href={selectProduct.shareLinks.twitter} className="text-xl">
+            <Link href={selectProduct.ShareLinks.Twitter} className="text-xl">
               <TwitterIcon />
             </Link>
           </div>

@@ -1,22 +1,23 @@
 export interface SelectedProduct {
-  name: string;
-  price: number;
-  reviews: number;
-  rating: number;
-  description: string;
-  sku: string;
-  category: string;
-  tags: string[];
-  shareLinks: {
-    facebook: string;
-    linkedin: string;
-    twitter: string;
+  ProductId: string;
+  Name: string;
+  Price: number;
+  Reviews: number;
+  Rating: number;
+  Description: string;
+  SKU: string;
+  Category: string;
+  Tags: string[];
+  ShareLinks: {
+    Facebook: string;
+    Linkedin: string;
+    Twitter: string;
   };
-  sizes: string[];
-  colors: {
-    name: string;
-    value: string;
+  Sizes: string[];
+  Colors: {
+    Name: string;
+    Value: string;
   }[];
-  thumbNailImages: { image: string; alt: string }[];
-  descriptionImages: { image: string; alt: string }[];
+  ThumbNailImages: { ImageUrl: string; Alt: string }[];
+  DescriptionImages: { ImageUrl: string; Alt: string }[];
 }

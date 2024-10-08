@@ -2,7 +2,7 @@
 import { FC, useState } from "react";
 
 interface ThumbNailGalleryProps {
-  images: { image: string; alt: string }[];
+  images: { ImageUrl: string; Alt: string }[];
 }
 
 const ThumbNailGallery: FC<ThumbNailGalleryProps> = ({ images }) => {
@@ -20,8 +20,8 @@ const ThumbNailGallery: FC<ThumbNailGalleryProps> = ({ images }) => {
                 onClick={() => setSelectedImage(image)}
               >
                 <img
-                  src={image.image}
-                  alt={`Thumbnail ${image.alt}`}
+                  src={image.ImageUrl}
+                  alt={`Thumbnail ${image.Alt}`}
                   className="w-20 h-20 rounded-lg bg-beige object-contain transition-transform transform group-hover:rotate-6 group-hover:scale-110 duration-300"
                 />
               </div>
@@ -31,8 +31,8 @@ const ThumbNailGallery: FC<ThumbNailGalleryProps> = ({ images }) => {
 
       <div className="w-full max-w-lg h-72 md:h-96">
         <img
-          src={selectedImage.image}
-          alt={selectedImage.alt}
+          src={selectedImage.ImageUrl}
+          alt={selectedImage.Alt}
           className="w-full h-full rounded-lg bg-beige"
         />
       </div>
