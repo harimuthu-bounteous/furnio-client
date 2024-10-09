@@ -1,65 +1,66 @@
 import { SelectedProduct } from "../types/SelectedProduct";
 
 export const selectedProduct: SelectedProduct = {
-  name: "Asgaard sofa",
-  price: 250000,
-  reviews: 5,
-  rating: 4.5,
-  description:
+  ProductId: "12345",
+  Name: "Asgaard sofa",
+  Price: 250000,
+  Reviews: 5,
+  Rating: 4.5,
+  Description:
     "Setting the bar as one of the loudest speakers in its class, the Kilburn is a compact, stout-hearted hero with a well-balanced audio which boasts a clear midrange and extended highs for a sound.",
-  sku: "SS001",
-  category: "Sofas",
-  tags: ["Sofa", "Chair", "Home", "Shop"],
-  shareLinks: {
-    facebook: "/shop",
-    linkedin: "/shop",
-    twitter: "/shop",
+  SKU: "SS001",
+  Category: "Sofas",
+  Tags: ["Sofa", "Chair", "Home", "Shop"],
+  ShareLinks: {
+    Facebook: "/shop",
+    Linkedin: "/shop",
+    Twitter: "/shop",
   },
-  sizes: ["L", "XL", "XS"],
-  colors: [
+  Sizes: ["L", "XL", "XS"],
+  Colors: [
     {
-      name: "Purple",
-      value: "#6a5acd",
+      Name: "Purple",
+      Value: "#6a5acd",
     },
     {
-      name: "Black",
-      value: "#000000",
+      Name: "Black",
+      Value: "#000000",
     },
     {
-      name: "Gold",
-      value: "#ffd700",
-    },
-  ],
-  thumbNailImages: [
-    {
-      alt: "Sofa1",
-      image: "/assets/images/Sofa1.png",
-    },
-    {
-      alt: "Sofa2",
-      image: "/assets/images/Sofa2.png",
-    },
-    {
-      alt: "Sofa3",
-      image: "/assets/images/Sofa3.png",
-    },
-    {
-      alt: "Sofa4",
-      image: "/assets/images/Sofa4.png",
-    },
-    {
-      alt: "Sofa5",
-      image: "/assets/images/Sofa5.png",
+      Name: "Gold",
+      Value: "#ffd700",
     },
   ],
-  descriptionImages: [
+  ThumbNailImages: [
     {
-      alt: "Sofa6",
-      image: "/assets/images/Sofa6.png",
+      Alt: "Sofa1",
+      ImageUrl: "/assets/images/Sofa1.png",
     },
     {
-      alt: "Sofa7",
-      image: "/assets/images/Sofa7.png",
+      Alt: "Sofa2",
+      ImageUrl: "/assets/images/Sofa2.png",
+    },
+    {
+      Alt: "Sofa3",
+      ImageUrl: "/assets/images/Sofa3.png",
+    },
+    {
+      Alt: "Sofa4",
+      ImageUrl: "/assets/images/Sofa4.png",
+    },
+    {
+      Alt: "Sofa5",
+      ImageUrl: "/assets/images/Sofa5.png",
+    },
+  ],
+  DescriptionImages: [
+    {
+      Alt: "Sofa6",
+      ImageUrl: "/assets/images/Sofa6.png",
+    },
+    {
+      Alt: "Sofa7",
+      ImageUrl: "/assets/images/Sofa7.png",
     },
   ],
 };

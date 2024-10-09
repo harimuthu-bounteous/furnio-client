@@ -1,11 +1,11 @@
 import { FC } from "react";
 import { cn } from "@/src/utils/cn";
-import { Product } from "@/src/types/Product";
 import ProductCard from "../common/ProductCard";
 import ListProductCard from "../common/ListProductCard";
+import { SelectedProduct } from "@/src/types/SelectedProduct";
 
 interface ProductListProps {
-  products: Array<Product>;
+  products: SelectedProduct[];
   viewMode: string;
 }
 
@@ -21,9 +21,9 @@ const ProductList: FC<ProductListProps> = ({ products, viewMode }) => {
     >
       {products.map((product) =>
         viewMode === "grid" ? (
-          <ProductCard product={product} key={product.id} />
+          <ProductCard product={product} key={product.ProductId} />
         ) : (
-          <ListProductCard product={product} key={product.id} />
+          <ListProductCard product={product} key={product.ProductId} />
         )
       )}
     </div>

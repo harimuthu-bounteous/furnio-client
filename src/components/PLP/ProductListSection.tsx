@@ -3,8 +3,9 @@ import { FC, useState } from "react";
 import FilterProductSection from "./FilterProductSection";
 import Pagination from "./Pagination";
 import ProductList from "./ProductList";
-import { products } from "@/src/data/Products"; // Make sure you import products data
-import Typography from "../common/Typography"; // Assume you have a Typography component for displaying messages
+import Typography from "../common/Typography";
+import { useFetchAllProducts } from "@/src/hooks/useFetchProducts";
+import { SelectedProduct } from "@/src/types/SelectedProduct";
 
 const ProductListSection: FC = () => {
   const [filterValue, setFilterValue] = useState("");
@@ -13,27 +14,29 @@ const ProductListSection: FC = () => {
   const [sortBy, setSortBy] = useState("Default"); // Default sort option
   const [currentPage, setCurrentPage] = useState(1); // State for current page
 
-  // Filter and sort the products based on the state
-  const filteredProducts = products
+  const { data: products, isLoading, isError } = useFetchAllProducts();
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Something went wrong</div>;
+
+  const filteredProducts = (products as SelectedProduct[])
     .filter((product) =>
-      product.name.toLowerCase().includes(filterValue.toLowerCase())
+      product.Name.toLowerCase().includes(filterValue.toLowerCase())
     )
     .sort((a, b) => {
       if (sortBy === "Price: Low to High") {
-        return a.price - b.price;
+        return a.Price - b.Price;
       } else if (sortBy === "Price: High to Low") {
-        return b.price - a.price;
+        return b.Price - a.Price;
       } else if (sortBy === "Alphabetical") {
-        return a.name.localeCompare(b.name); // Alphabetical sort
+        return a.Name.localeCompare(b.Name);
       } else {
-        return a.id - b.id; // Sort by ID (Default)
+        return 0;
       }
     });
 
-  // Calculate total pages
   const totalPages = Math.ceil(filteredProducts.length / showCount);
 
-  // Get the products for the current page
   const paginatedProducts = filteredProducts.slice(
     (currentPage - 1) * showCount,
     currentPage * showCount
@@ -66,7 +69,7 @@ const ProductListSection: FC = () => {
         <Pagination
           currentPage={currentPage}
           totalPages={totalPages}
-          onPageChange={setCurrentPage} // Pass the function to change the page
+          onPageChange={setCurrentPage}
         />
       )}
     </div>

@@ -1,9 +1,8 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-// import { Product } from "../types/Product";
 import { SelectedProduct } from "../types/SelectedProduct";
 
-const fetchProducts = async (): Promise<SelectedProduct[]> => {
+const fetchAllProducts = async (): Promise<SelectedProduct[]> => {
   try {
     const { data } = await axios.get("http://localhost:5219/api/Products");
     return data;
@@ -18,11 +17,11 @@ const fetchProducts = async (): Promise<SelectedProduct[]> => {
   }
 };
 
-const useFetchProducts = () => {
+const useFetchAllProducts = () => {
   return useQuery<SelectedProduct[], Error>({
     queryKey: ["products"],
-    queryFn: fetchProducts,
+    queryFn: fetchAllProducts,
   });
 };
 
-export { useFetchProducts, fetchProducts };
+export { useFetchAllProducts, fetchAllProducts };

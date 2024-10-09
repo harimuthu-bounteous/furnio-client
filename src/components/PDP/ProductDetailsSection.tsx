@@ -17,7 +17,7 @@ const ProductDetailsSection: FC<ProductDetailsSectionProp> = ({ product }) => {
         <ProductInfo selectProduct={product} />
       </div>
       <TabNavigation descriptionImages={product.DescriptionImages} />
-      <RelatedProducts />
+      <RelatedProducts productId={product.ProductId} />
     </div>
   );
 };

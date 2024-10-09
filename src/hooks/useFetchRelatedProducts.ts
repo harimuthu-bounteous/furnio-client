@@ -2,10 +2,12 @@ import axios from "axios";
 import { SelectedProduct } from "../types/SelectedProduct";
 import { useQuery } from "@tanstack/react-query";
 
-const fetchProductById = async (id: string): Promise<SelectedProduct> => {
+const fetchRelatedProductById = async (
+  id: string
+): Promise<SelectedProduct[]> => {
   try {
     const response = await axios.get(
-      `http://localhost:5219/api/Products/${id}`
+      `http://localhost:5219/api/Products/${id}/related`
     );
     console.log(response.data);
     return response.data;
@@ -20,12 +22,12 @@ const fetchProductById = async (id: string): Promise<SelectedProduct> => {
   }
 };
 
-const useFetchProductById = (id: string) => {
+const useFetchRelatedProductById = (id: string) => {
   return useQuery({
-    queryKey: ["productById", id],
-    queryFn: () => fetchProductById(id),
+    queryKey: ["relatedProductById", id],
+    queryFn: () => fetchRelatedProductById(id),
     staleTime: 0,
   });
 };
 
-export { useFetchProductById, fetchProductById };
+export { useFetchRelatedProductById, fetchRelatedProductById };

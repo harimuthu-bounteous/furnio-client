@@ -7,6 +7,8 @@ export interface SelectedProduct {
   Description: string;
   SKU: string;
   Category: string;
+  Label?: "Discount" | "New";
+  Discount?: number;
   Tags: string[];
   ShareLinks: {
     Facebook: string;

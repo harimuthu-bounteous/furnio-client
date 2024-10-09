@@ -55,7 +55,7 @@ const TabNavigation: FC<TabNavigationProps> = ({ descriptionImages }) => {
       </div>
 
       {/* Content */}
-      <div className="mt-6 min-h-[28rem] md:h-[33rem]">
+      <div className="mt-6 min-h-[28rem] md:min-h-[33rem]">
         {activeTab === "description" && (
           <>
             <div>
@@ -84,7 +84,7 @@ const TabNavigation: FC<TabNavigationProps> = ({ descriptionImages }) => {
                     <img
                       src={descImage.ImageUrl}
                       alt={descImage.Alt}
-                      className="w-full h-auto"
+                      className="w-full max-h-[33rem]"
                     />
                   </div>
                 );

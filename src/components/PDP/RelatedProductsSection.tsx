@@ -1,16 +1,38 @@
 "use client";
 import { FC, useState } from "react";
 import Typography from "../common/Typography";
-import { products } from "@/src/data/Products";
+// import { products } from "@/src/data/Products";
 import ProductCard from "../common/ProductCard";
 import Button from "../common/Button";
+import { selectedProduct } from "@/src/data/SelectedProduct";
+import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { useFetchRelatedProductById } from "@/src/hooks/useFetchRelatedProducts";
 
-const RelatedProducts: FC = () => {
+interface RelatedProductsProp {
+  productId: string;
+}
+
+const RelatedProducts: FC<RelatedProductsProp> = ({ productId }) => {
   const [visibleCount, setVisibleCount] = useState<number>(4);
+  const {
+    data: relatedProducts,
+    isLoading,
+    isError,
+  } = useFetchRelatedProductById(productId);
 
   const showMoreProducts = () => {
     setVisibleCount((prevCount) => prevCount + 4);
   };
+
+  const showLessProducts = () => {
+    setVisibleCount(4); // Minimum 4 visible
+  };
+
+  if (isLoading) return <div>Loading...</div>;
+  if (isError) return <div>Error loading related products.</div>;
+
+  const hasProducts =
+    relatedProducts && (relatedProducts as SelectedProduct[]).length > 0;
 
   return (
     <div className="w-full flex flex-col justify-center items-center bg-zinc-50 py-8 border-y border-black/30">
@@ -22,17 +44,33 @@ const RelatedProducts: FC = () => {
       />
 
       {/* Products Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-16">
-        {products.slice(0, visibleCount).map((product) => (
-          <ProductCard product={product} key={product.id} />
-        ))}
-      </div>
+      {hasProducts ? (
+        <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-10">
+          {(relatedProducts as SelectedProduct[])
+            .slice(0, visibleCount)
+            .map((product) => (
+              <ProductCard product={product} key={product.ProductId} />
+            ))}
+        </div>
+      ) : (
+        <div className="text-center text-gray-500">
+          No related products available.
+        </div>
+      )}
 
-      {/* Show More Button */}
-      {visibleCount < products.length && (
+      {/* Show More / Show Less Button */}
+      {hasProducts && (
         <Button
-          value="Show More"
-          onClick={showMoreProducts}
+          value={
+            visibleCount < (relatedProducts as SelectedProduct[]).length
+              ? "Show More"
+              : "Show Less"
+          }
+          onClick={
+            visibleCount < (relatedProducts as SelectedProduct[]).length
+              ? showMoreProducts
+              : showLessProducts
+          }
           variant="v5"
           className="px-20 py-2 mt-8 text-xl font-semibold"
         />
