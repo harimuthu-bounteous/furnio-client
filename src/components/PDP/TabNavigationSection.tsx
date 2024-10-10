@@ -2,6 +2,7 @@
 import { FC, useState } from "react";
 import Typography from "../common/Typography";
 import { cn } from "@/src/utils/cn";
+import Image from "next/image";
 
 interface TabNavigationProps {
   descriptionImages: {
@@ -81,10 +82,13 @@ const TabNavigation: FC<TabNavigationProps> = ({ descriptionImages }) => {
               {descriptionImages.map((descImage) => {
                 return (
                   <div className="bg-beige p-4 rounded-lg" key={descImage.Alt}>
-                    <img
+                    <Image
                       src={descImage.ImageUrl}
                       alt={descImage.Alt}
                       className="w-full max-h-[33rem]"
+                      height={600}
+                      width={600}
+                      priority
                     />
                   </div>
                 );

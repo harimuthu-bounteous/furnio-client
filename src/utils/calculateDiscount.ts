@@ -10,4 +10,4 @@ function calculateDiscountedPrice(
   return newPrice;
 }
 
-module.exports = { calculateDiscountedPrice };
+export { calculateDiscountedPrice };

@@ -9,7 +9,7 @@ const fetchRelatedProductById = async (
     const response = await axios.get(
       `http://localhost:5219/api/Products/${id}/related`
     );
-    console.log(response.data);
+    // console.log(response.data);
     return response.data;
   } catch (error) {
     if (axios.isAxiosError(error)) {

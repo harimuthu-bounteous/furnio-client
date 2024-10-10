@@ -18,10 +18,10 @@ const BreadCrumbHeader: FC<BreadCrumbHeaderProp> = ({ product }) => {
         Shop
       </Link>
       <BreadcrumbArrow />
-      <div className="bg-black/60 w-0.5 h-6 md:h-8 mx-4 md:mx-6" />
+      {/* <div className="bg-black/60 w-0.5 h-6 md:h-8 mx-4 md:mx-6" /> */}
       <Link
         href={"/product/" + product.ProductId}
-        className="text-lg text-gray-400 hover:underline"
+        className="text-lg text-gray-400 hover:underline truncate text-ellipsis"
       >
         {product.Name}
       </Link>

@@ -1,4 +1,5 @@
 "use client";
+import Image from "next/image";
 import { FC, useState } from "react";
 
 interface ThumbNailGalleryProps {
@@ -19,9 +20,12 @@ const ThumbNailGallery: FC<ThumbNailGalleryProps> = ({ images }) => {
                 className="relative group cursor-pointer"
                 onClick={() => setSelectedImage(image)}
               >
-                <img
+                <Image
+                  height={600}
+                  width={600}
                   src={image.ImageUrl}
                   alt={`Thumbnail ${image.Alt}`}
+                  priority
                   className="w-20 h-20 rounded-lg bg-beige object-contain transition-transform transform group-hover:rotate-6 group-hover:scale-110 duration-300"
                 />
               </div>
@@ -30,9 +34,12 @@ const ThumbNailGallery: FC<ThumbNailGalleryProps> = ({ images }) => {
       </div>
 
       <div className="w-full max-w-lg h-72 md:h-96">
-        <img
+        <Image
           src={selectedImage.ImageUrl}
           alt={selectedImage.Alt}
+          height={600}
+          width={600}
+          priority
           className="w-full h-full rounded-lg bg-beige"
         />
       </div>

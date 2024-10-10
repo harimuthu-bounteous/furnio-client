@@ -1,6 +1,6 @@
 import { Product } from "@/src/types/Product";
 import Image from "next/image";
-import { FC } from "react";
+import { FC, useEffect } from "react";
 import Typography from "./Typography";
 import Button from "./Button";
 import Link from "next/link";
@@ -9,6 +9,7 @@ import CompareIcon from "@/public/assets/icons/CompareIcon";
 import LikeIcon from "@/public/assets/icons/LikeIcon";
 import { SelectedProduct } from "@/src/types/SelectedProduct";
 import { useRouter } from "next/navigation";
+import { calculateDiscountedPrice } from "@/src/utils/calculateDiscount";
 
 interface ProductCardProps {
   product: SelectedProduct;
@@ -16,6 +17,7 @@ interface ProductCardProps {
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {
   const router = useRouter();
+
   return (
     <div className="flex flex-col relative group overflow-hidden shadow rounded border border-gray-300">
       <div className="relative">
@@ -25,6 +27,7 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
           width={380}
           height={100}
           className="w-full"
+          priority
         />
         {product.Label === "Discount" && (
           <div className="absolute top-5 right-5 h-12 w-12 rounded-full bg-red-500/40 text-white font-bold flex items-center justify-center">
@@ -53,7 +56,13 @@ const ProductCard: FC<ProductCardProps> = ({ product }) => {
             <Typography
               variant="p"
               className="text-lg font-medium"
-              value={"Rs. "}
+              value={
+                "Rs. " +
+                calculateDiscountedPrice(
+                  product.Price,
+                  product.Discount as number
+                ).toFixed(2)
+              }
             />
           ) : (
             <Typography

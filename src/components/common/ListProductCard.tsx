@@ -1,6 +1,7 @@
 // ListProductCard.tsx
 import { Product } from "@/src/types/Product";
 import { SelectedProduct } from "@/src/types/SelectedProduct";
+import Image from "next/image";
 import { FC } from "react";
 
 interface ListProductCardProps {
@@ -10,10 +11,13 @@ interface ListProductCardProps {
 const ListProductCard: FC<ListProductCardProps> = ({ product }) => {
   return (
     <div className="w-full md:w-[80%] flex flex-row items-center gap-4 md:gap-12 p-2 md:p-4 bg-white rounded-md shadow-md">
-      <img
+      <Image
         src={product.ThumbNailImages[0].ImageUrl}
         alt={product.ThumbNailImages[0].Alt}
+        height={600}
+        width={600}
         className="w-32 h-32 object-cover rounded-md"
+        priority
       />
       <div className="w-full flex flex-col md:flex-row justify-between">
         <div className="flex flex-col items-start justify-center md:gap-3">

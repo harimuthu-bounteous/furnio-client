@@ -44,7 +44,7 @@ const FilterProductSection: FC<FilterProductSectionProps> = ({
   const showOptions = [8, 16, 24, 48];
 
   const handleFilterSubmit = () => {
-    console.log("Filter applied:", filterValue);
+    // console.log("Filter applied:", filterValue);
     setPopoverVisible(false);
   };
 
@@ -74,7 +74,7 @@ const FilterProductSection: FC<FilterProductSectionProps> = ({
             <Button
               ref={filterButtonRef}
               variant="plain"
-              className="flex flex-row items-center justify-center md:gap-1 cursor-pointer hover:bg-yellow-500 py-2 px-3 sm:py-3 sm:px-4 bg-yellow-50 "
+              className="flex flex-row items-center justify-center md:gap-1 cursor-pointer hover:bg-yellow-600 py-2 px-3 sm:py-3 sm:px-4 bg-yellow-500 "
               onClick={() => setPopoverVisible((prev) => !prev)}
               value="Filter"
               icon={<FilterIcon />}
@@ -113,32 +113,29 @@ const FilterProductSection: FC<FilterProductSectionProps> = ({
             )}
           </div>
 
+          {/* <div className="w-[2px] h-8 md:h-8 bg-black/70 mx-1 md:mx-2" /> */}
           <div className="flex flex-row gap-2 md:gap-2 ">
-            <div
+            <button
               onClick={() => setViewMode("grid")}
               className={cn(
-                "p-1 sm:py-2 sm:px-2.5 flex items-center",
-                viewMode === "grid"
-                  ? "active bg-yellow-500 rounded shadow-inner"
-                  : ""
+                "p-1 sm:py-2 sm:px-2.5 flex items-center border border-transparent hover:border-black/60 rounded",
+                viewMode === "grid" ? "active bg-yellow-500 shadow-inner" : ""
               )}
             >
               <GridRoundIcon />
-            </div>
-            <div
+            </button>
+            <button
               onClick={() => setViewMode("list")}
               className={cn(
-                "py-1 px-1.5 sm:p-3 flex items-center",
-                viewMode === "list"
-                  ? "active bg-yellow-500 shadow-inner rounded"
-                  : ""
+                "py-1 px-1.5 sm:p-3 flex items-center  border border-transparent hover:border-black/60 rounded",
+                viewMode === "list" ? "active bg-yellow-500 shadow-inner" : ""
               )}
             >
               <ViewListIcon className="h-6 w-6" />
-            </div>
+            </button>
           </div>
         </div>
-        <div className="w-[2px] h-8 md:h-8 bg-black/70 mx-1 md:mx-2"></div>
+        <div className="w-[2px] h-8 md:h-8 bg-black/70 mx-1 md:mx-2" />
         <Typography
           value={`Showing ${showCount} results`}
           variant="p"

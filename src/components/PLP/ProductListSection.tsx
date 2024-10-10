@@ -16,7 +16,29 @@ const ProductListSection: FC = () => {
 
   const { data: products, isLoading, isError } = useFetchAllProducts();
 
-  if (isLoading) return <div>Loading...</div>;
+  if (isLoading) {
+    return (
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-16 p-8 md:px-16 md:py-12">
+        {Array.from({ length: showCount }).map((_, index) => (
+          <div
+            key={index}
+            className="flex flex-col animate-pulse relative group overflow-hidden shadow rounded border border-gray-300"
+          >
+            <div className="bg-gray-300 h-48 w-full"></div>
+            <div className="p-4 space-y-2 bg-gray-100">
+              <div className="bg-gray-300 h-6 w-3/4"></div>
+              <div className="bg-gray-300 h-4 w-1/2"></div>
+              <div className="flex justify-between items-center">
+                <div className="bg-gray-300 h-6 w-1/4"></div>
+                <div className="bg-gray-300 h-6 w-1/4"></div>
+              </div>
+            </div>
+          </div>
+        ))}
+      </div>
+    );
+  }
+
   if (isError) return <div>Something went wrong</div>;
 
   const filteredProducts = (products as SelectedProduct[])
