@@ -1,5 +1,6 @@
 "use client";
 import { FC, useState } from "react";
+import { cn } from "@/src/utils/cn";
 import Image from "next/image";
 import Link from "next/link";
 import Logo from "@/public/assets/images/FurniroIcon.png";
@@ -8,12 +9,17 @@ import HeartIcon from "@/public/assets/icons/HeartIcon";
 import AccountAlertIcon from "@/public/assets/icons/AccountAlertIcon";
 import SearchIcon from "@/public/assets/icons/SearchIcon";
 import ShoppingCartIcon from "@/public/assets/icons/ShoppingCartIcon";
-import MenuIcon from "@/public/assets/icons/MenuIcon"; // Assuming you have a menu icon
-import { cn } from "@/src/utils/cn";
+import MenuIcon from "@/public/assets/icons/MenuIcon";
 import CloseIcon from "@/public/assets/icons/CloseIcon";
+import CartModal from "../common/CartModal";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/src/redux/store";
+import { openCart } from "@/src/redux/slice/CartSlice";
 
 const Navbar: FC = () => {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const dispatch: AppDispatch = useDispatch();
+  const isCartOpen = useSelector((state: RootState) => state.cart.isCartOpen);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -70,9 +76,14 @@ const Navbar: FC = () => {
           <Link href="/shop">
             <HeartIcon className="stroke-black w-6 h-6" />
           </Link>
-          <Link href="/shop">
+          <button
+            onClick={() => {
+              dispatch(openCart());
+              console.log("Hello");
+            }}
+          >
             <ShoppingCartIcon className="w-6 h-6" />
-          </Link>
+          </button>
         </div>
       </nav>
 
@@ -130,6 +141,8 @@ const Navbar: FC = () => {
           onClick={toggleMenu}
         />
       )}
+
+      {isCartOpen && <CartModal />}
     </>
   );
 };

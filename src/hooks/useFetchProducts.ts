@@ -1,10 +1,11 @@
 import { useQuery } from "@tanstack/react-query";
 import axios from "axios";
-import { SelectedProduct } from "../types/SelectedProduct";
+import { Product } from "../types/Product";
+import { BASE_URL } from "../constants/baseUrl";
 
-const fetchAllProducts = async (): Promise<SelectedProduct[]> => {
+const fetchAllProducts = async (): Promise<Product[]> => {
   try {
-    const { data } = await axios.get("http://localhost:5219/api/Products");
+    const { data } = await axios.get(BASE_URL + "/api/product");
     return data;
   } catch (error) {
     if (axios.isAxiosError(error)) {
@@ -18,7 +19,7 @@ const fetchAllProducts = async (): Promise<SelectedProduct[]> => {
 };
 
 const useFetchAllProducts = () => {
-  return useQuery<SelectedProduct[], Error>({
+  return useQuery<Product[], Error>({
     queryKey: ["products"],
     queryFn: fetchAllProducts,
   });

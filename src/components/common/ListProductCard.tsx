@@ -1,11 +1,9 @@
-// ListProductCard.tsx
 import { Product } from "@/src/types/Product";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
 import Image from "next/image";
 import { FC } from "react";
 
 interface ListProductCardProps {
-  product: SelectedProduct;
+  product: Product;
 }
 
 const ListProductCard: FC<ListProductCardProps> = ({ product }) => {

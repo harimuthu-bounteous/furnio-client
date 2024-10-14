@@ -1,4 +1,3 @@
-import { Product } from "@/src/types/Product";
 import Image from "next/image";
 import { FC, useEffect } from "react";
 import Typography from "./Typography";
@@ -7,12 +6,12 @@ import Link from "next/link";
 import ShareIcon from "@/public/assets/icons/ShareIcon";
 import CompareIcon from "@/public/assets/icons/CompareIcon";
 import LikeIcon from "@/public/assets/icons/LikeIcon";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { Product } from "@/src/types/Product";
 import { useRouter } from "next/navigation";
 import { calculateDiscountedPrice } from "@/src/utils/calculateDiscount";
 
 interface ProductCardProps {
-  product: SelectedProduct;
+  product: Product;
 }
 
 const ProductCard: FC<ProductCardProps> = ({ product }) => {

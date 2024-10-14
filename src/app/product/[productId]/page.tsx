@@ -6,8 +6,7 @@ import { BreadCrumbHeaderSkeleton } from "@/src/components/skeleton/BreadCrumbHe
 import { ProductInfoSkeleton } from "@/src/components/skeleton/ProductInfoSkeleton";
 import { ThumbNailGallerySkeleton } from "@/src/components/skeleton/ThumbNailGallerySkeleton";
 import { useFetchProductById } from "@/src/hooks/useFetchProductById";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
-import { useEffect } from "react";
+import { Product } from "@/src/types/Product";
 
 interface PageProp {
   params: {
@@ -41,8 +40,8 @@ export default function Page({ params }: PageProp) {
 
   return (
     <div>
-      <BreadCrumbHeader product={product as SelectedProduct} />
-      <ProductDetailsSection product={product as SelectedProduct} />
+      <BreadCrumbHeader product={product as Product} />
+      <ProductDetailsSection product={product as Product} />
     </div>
   );
 }

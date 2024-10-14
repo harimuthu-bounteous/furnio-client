@@ -1,14 +1,11 @@
 import axios from "axios";
-import { SelectedProduct } from "../types/SelectedProduct";
+import { Product } from "../types/Product";
 import { useQuery } from "@tanstack/react-query";
+import { BASE_URL } from "../constants/baseUrl";
 
-const fetchRelatedProductById = async (
-  id: string
-): Promise<SelectedProduct[]> => {
+const fetchRelatedProductById = async (id: string): Promise<Product[]> => {
   try {
-    const response = await axios.get(
-      `http://localhost:5219/api/Products/${id}/related`
-    );
+    const response = await axios.get(`${BASE_URL}/api/product/${id}/related`);
     // console.log(response.data);
     return response.data;
   } catch (error) {

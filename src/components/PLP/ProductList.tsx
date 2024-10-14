@@ -2,10 +2,10 @@ import { FC } from "react";
 import { cn } from "@/src/utils/cn";
 import ProductCard from "../common/ProductCard";
 import ListProductCard from "../common/ListProductCard";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { Product } from "@/src/types/Product";
 
 interface ProductListProps {
-  products: SelectedProduct[];
+  products: Product[];
   viewMode: string;
 }
 

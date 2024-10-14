@@ -1,10 +1,10 @@
 import BreadcrumbArrow from "@/public/assets/icons/BreadcrumbArrow";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { Product } from "@/src/types/Product";
 import Link from "next/link";
 import { FC } from "react";
 
 interface BreadCrumbHeaderProp {
-  product: SelectedProduct;
+  product: Product;
 }
 
 const BreadCrumbHeader: FC<BreadCrumbHeaderProp> = ({ product }) => {

@@ -1,6 +1,6 @@
-import { SelectedProduct } from "../types/SelectedProduct";
+import { Product } from "../types/Product";
 
-export const selectedProduct: SelectedProduct = {
+export const product: Product = {
   ProductId: "12345",
   Name: "Asgaard sofa",
   Price: 250000,

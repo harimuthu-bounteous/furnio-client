@@ -4,8 +4,7 @@ import Typography from "../common/Typography";
 // import { products } from "@/src/data/Products";
 import ProductCard from "../common/ProductCard";
 import Button from "../common/Button";
-import { selectedProduct } from "@/src/data/SelectedProduct";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { Product } from "@/src/types/Product";
 import { useFetchRelatedProductById } from "@/src/hooks/useFetchRelatedProducts";
 
 interface RelatedProductsProp {
@@ -32,7 +31,7 @@ const RelatedProducts: FC<RelatedProductsProp> = ({ productId }) => {
   if (isError) return <div>Error loading related products.</div>;
 
   const hasProducts =
-    relatedProducts && (relatedProducts as SelectedProduct[]).length > 0;
+    relatedProducts && (relatedProducts as Product[]).length > 0;
 
   return (
     <div className="w-full flex flex-col justify-center items-center bg-zinc-50 py-8 border-y border-black/30">
@@ -46,7 +45,7 @@ const RelatedProducts: FC<RelatedProductsProp> = ({ productId }) => {
       {/* Products Grid */}
       {hasProducts ? (
         <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-10 px-10">
-          {(relatedProducts as SelectedProduct[])
+          {(relatedProducts as Product[])
             .slice(0, visibleCount)
             .map((product) => (
               <ProductCard product={product} key={product.ProductId} />
@@ -62,12 +61,12 @@ const RelatedProducts: FC<RelatedProductsProp> = ({ productId }) => {
       {hasProducts && (
         <Button
           value={
-            visibleCount < (relatedProducts as SelectedProduct[]).length
+            visibleCount < (relatedProducts as Product[]).length
               ? "Show More"
               : "Show Less"
           }
           onClick={
-            visibleCount < (relatedProducts as SelectedProduct[]).length
+            visibleCount < (relatedProducts as Product[]).length
               ? showMoreProducts
               : showLessProducts
           }

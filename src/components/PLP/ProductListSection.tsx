@@ -5,7 +5,7 @@ import Pagination from "./Pagination";
 import ProductList from "./ProductList";
 import Typography from "../common/Typography";
 import { useFetchAllProducts } from "@/src/hooks/useFetchProducts";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { Product } from "@/src/types/Product";
 
 const ProductListSection: FC = () => {
   const [filterValue, setFilterValue] = useState("");
@@ -41,7 +41,7 @@ const ProductListSection: FC = () => {
 
   if (isError) return <div>Something went wrong</div>;
 
-  const filteredProducts = (products as SelectedProduct[])
+  const filteredProducts = (products as Product[])
     .filter((product) =>
       product.Name.toLowerCase().includes(filterValue.toLowerCase())
     )

@@ -1,6 +1,6 @@
 "use client";
 import { FC, useState } from "react";
-import { SelectedProduct } from "@/src/types/SelectedProduct";
+import { Product } from "@/src/types/Product";
 import { cn } from "@/src/utils/cn";
 import Link from "next/link";
 import FacebookIcon from "@/public/assets/icons/FacebookIcon";
@@ -8,23 +8,27 @@ import LinkedinIcon from "@/public/assets/icons/LinkedinIcon";
 import TwitterIcon from "@/public/assets/icons/TwitterIcon";
 import Typography from "../common/Typography";
 import PlusIcon from "@/public/assets/icons/PlusIcon";
+import { useDispatch, useSelector } from "react-redux";
+import { AppDispatch, RootState } from "@/src/redux/store";
+import { addItem } from "@/src/redux/slice/CartSlice";
 
 interface ProductInfoProps {
-  selectProduct: SelectedProduct;
+  product: Product;
 }
 
-const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
-  const [selectedSize, setSelectedSize] = useState(selectProduct.Sizes[0]);
-  const [selectedColor, setSelectedColor] = useState(
-    selectProduct.Colors[0].Value
-  );
+const ProductInfo: FC<ProductInfoProps> = ({ product }) => {
+  const dispatch: AppDispatch = useDispatch();
+  const cartState = useSelector((state: RootState) => state.cart);
+
+  const [selectedSize, setSelectedSize] = useState(product.Sizes[0]);
+  const [selectedColor, setSelectedColor] = useState(product.Colors[0]);
   const [quantity, setQuantity] = useState(1);
 
   const handleSizeChange = (size: string) => {
     setSelectedSize(size);
   };
 
-  const handleColorChange = (color: string) => {
+  const handleColorChange = (color: { Name: string; Value: string }) => {
     setSelectedColor(color);
   };
 
@@ -32,16 +36,30 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
     setQuantity((prevQuantity) => Math.max(1, prevQuantity + change));
   };
 
+  const handleAddToCart = () => {
+    dispatch(
+      addItem({
+        ProductId: product.ProductId as string, // Ensure this matches your product structure
+        Size: selectedSize,
+        Color: selectedColor,
+        Quantity: quantity,
+        Product: product,
+      })
+    );
+
+    console.log("cartState:", cartState);
+  };
+
   return (
     <div className="w-full md:w-1/2 mx-auto px-8 md:px-4 md:py-2 bg-white rounded-md">
       {/* Product Title and Price */}
       <Typography
         variant="h1"
-        value={selectProduct.Name}
+        value={product.Name}
         className="text-3xl font-medium"
       />
       <Typography
-        value={"Rs. " + selectProduct.Price.toFixed(2)}
+        value={"Rs. " + product.Price.toFixed(2)}
         variant="p"
         className="text-2xl text-gray-400"
       />
@@ -49,25 +67,23 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
       {/* Rating and Reviews */}
       <div className="flex flex-row gap-4 items-center my-3">
         <div className="flex text-yellow-500">
-          {[...Array(Math.floor(selectProduct.Rating))].map((_, index) => (
+          {[...Array(Math.floor(product.Rating))].map((_, index) => (
             <span key={index} className="text-2xl">
               ★
             </span>
           ))}
-          {selectProduct.Rating % 1 !== 0 && (
-            <span className="text-2xl">★½</span>
-          )}
+          {product.Rating % 1 !== 0 && <span className="text-2xl">★½</span>}
         </div>
         <div className="w-0.5 h-8 bg-black/60 mx-2" />
         <span className="text-gray-500">
-          {selectProduct.Reviews} Customer Reviews
+          {product.Reviews} Customer Reviews
         </span>
       </div>
 
       {/* Description */}
       <Typography
         variant="p"
-        value={selectProduct.Description}
+        value={product.Description}
         className="text-gray-700 my-4"
       />
 
@@ -79,7 +95,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           className="font-semibold mb-2 text-gray-400"
         />
         <div className="flex space-x-2">
-          {selectProduct.Sizes.map((size) => (
+          {product.Sizes.map((size) => (
             <button
               key={size}
               onClick={() => handleSizeChange(size)}
@@ -102,13 +118,13 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           className="font-semibold mb-2 text-gray-400"
         />
         <div className="flex space-x-2">
-          {selectProduct.Colors.map((color) => (
+          {product.Colors.map((color) => (
             <button
               key={color.Name}
-              onClick={() => handleColorChange(color.Value)}
+              onClick={() => handleColorChange(color)}
               className={cn(
                 "w-8 h-8 rounded-full border-2",
-                color.Value === selectedColor
+                color.Value === selectedColor.Value
                   ? "border-gray-100"
                   : "border-transparent"
               )}
@@ -140,7 +156,10 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           </button>
         </div>
         {/* Add to Cart and Compare Buttons */}
-        <button className="w-full flex items-center justify-center py-3 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white transition-all">
+        <button
+          onClick={handleAddToCart}
+          className="w-full flex items-center justify-center py-3 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white transition-all"
+        >
           Add To Cart
         </button>
         <button className="w-full flex flex-row gap-2 items-center justify-center py-3 text-black text-lg font-medium rounded-md border border-black hover:bg-black hover:text-white hover:stroke-white transition-all">
@@ -157,7 +176,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
             variant="span"
             className="font-semibold min-w-[100px]"
           />
-          : {selectProduct.SKU}
+          : {product.SKU}
         </div>
         <div className="flex flex-row gap-1">
           <Typography
@@ -165,7 +184,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
             variant="span"
             className="font-semibold min-w-[100px]"
           />
-          : {selectProduct.Category}
+          : {product.Category}
         </div>
         <div className="flex flex-row gap-1">
           <Typography
@@ -173,7 +192,7 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
             value="Tags"
             className="font-semibold min-w-[100px]"
           />
-          : {selectProduct.Tags.join(", ")}
+          : {product.Tags.join(", ")}
         </div>
         <div className="flex flex-row items-center gap-1">
           <Typography
@@ -183,13 +202,13 @@ const ProductInfo: FC<ProductInfoProps> = ({ selectProduct }) => {
           />
           :{" "}
           <div className="flex space-x-4">
-            <Link href={selectProduct.ShareLinks.Facebook} className="text-xl">
+            <Link href={product.ShareLinks.Facebook} className="text-xl">
               <FacebookIcon />
             </Link>
-            <Link href={selectProduct.ShareLinks.Linkedin} className="text-xl">
+            <Link href={product.ShareLinks.Linkedin} className="text-xl">
               <LinkedinIcon />
             </Link>
-            <Link href={selectProduct.ShareLinks.Twitter} className="text-xl">
+            <Link href={product.ShareLinks.Twitter} className="text-xl">
               <TwitterIcon />
             </Link>
           </div>
